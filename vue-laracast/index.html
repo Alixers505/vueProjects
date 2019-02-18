@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Vue - Laracast</title>
+
+    <link rel="stylehsheet" href="styles.css">
+
+    <style>
+        .is-loading {background-color: red};
+    </style>
+</head>
+<body>
+
+    <header>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+    
+            </ul>
+        </nav>
+    
+    </header>
+    
+    
+    <main>
+        <div id="container">
+
+            <label for="input">Message: </label>
+            <input type="text" id="input" v-model="message">
+
+            <p>The value of the input is: {{ message }}.</p>
+    
+        </div>
+
+        <div id="container-2">
+            <ul>
+                <li v-for="name in names" v-text="name"></li>
+            </ul>
+
+            <label for="name">Type a name: </label>
+            <input id="name" type="text" v-model="newName">
+            <button @click="addToList" type="submit"> Add Name </button>
+
+        </div>
+
+        <div id="container-3">
+            <button :class="{ 'is-loading' : isLoading }" @click="toggleClass">Click Me</button>
+        </div>
+
+        <div id="container-4">
+
+            <h1>
+                {{ reversedMessage }}
+            </h1>
+
+        </div>
+
+        <div id="container-5">
+
+            <h1>All Tasks</h1>
+
+            <ul>
+                <li v-for="task in tasks" v-text="task.description"></li>
+            </ul>
+
+            <h1>Incomplete Tasks</h1>
+
+            <ul>
+                <li v-for="task in incompleteTasks" v-text="task.description"></li>
+            </ul>
+
+        </div>
+
+        <div id="container-6">
+
+            <task-list>
+
+            </task-list>
+
+        </div>
+
+    </main>
+    
+    <footer>
+    
+    </footer>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22/dist/vue.js"></script>
+    <!-- production version, optimized for size and speed -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+
+    <script>
+
+        var app = new Vue ({
+            el: '#container',
+            data: {
+                message: 'Hello World'
+            }
+        });
+
+        var app2 = new Vue ({
+            el: '#container-2',
+            data: {
+                names: ['Joe', 'Marc', 'Deandre'],
+                newName: ''
+            },
+            methods: {
+                addToList () {
+                    this.names.push(this.newName)
+                }
+            }
+        })
+
+        var app3 = new Vue ({
+            el: '#container-3',
+            data: {
+                isLoading: false
+            },
+
+            methods: {
+                toggleClass() {
+                    this.isLoading = true;
+                }
+            }
+        })
+
+        var app4 = new Vue ({
+            el: '#container-4',
+            data: {
+                messages: 'Split and Reverse it'
+            },
+
+            methods: {
+
+            },
+
+            computed: {
+
+                reversedMessage() {
+                    return this.messages.split('').reverse().join('');
+                }
+            }
+        })
+
+        var app5 = new Vue ({
+            el: '#container-5',
+            data: {
+                tasks: [
+                    {description: 'Go to the store', completed: true},
+                    {description: 'Do the laundry', completed: false},
+                    {description: 'Clean the dishes', completed: false},
+                    {description: 'Make the bed', completed: true},
+                    {description: 'Walk the dog', completed: false},
+                    {description: 'Feed the pets', completed: true},
+                    {description: 'Vacuum the house', completed: false}
+                ]
+            },
+
+            computed: {
+                incompleteTasks() {
+                    return this.tasks.filter(task => !task.completed);
+                }
+            }
+        })
+
+
+        // Vue component -- task-list
+
+        var app6 = new Vue({
+            el: '#container-6',
+            data: {
+
+            },
+
+        });
+
+        Vue.component('task-list', {
+
+            template: `
+                 <li v-for="task in tasks" v-text="task.description"></li>
+            `,
+            data() {
+                return {
+                    tasks: [
+                        {description: 'Go to the store', completed: true},
+                        {description: 'Do the laundry', completed: false},
+                        {description: 'Clean the dishes', completed: false},
+                        {description: 'Make the bed', completed: true},
+                        {description: 'Walk the dog', completed: false},
+                        {description: 'Feed the pets', completed: true},
+                        {description: 'Vacuum the house', completed: false}
+                    ]
+                }
+            }
+        });
+
+    </script>
+
+    <script src="index.js"></script>
+
+</body>
+</html>

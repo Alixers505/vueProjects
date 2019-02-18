@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Mastery - Intro to Vue.js</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+        </ul>
+    </nav>
+
+</header>
+
+
+<main>
+    <div id="container">
+
+        <div id="welcome" class="page-title">
+            {{ message }}
+        </div>
+
+        <div id="app"> 
+            <div class="cart">
+                <p>Cart({{ cart.length }})</p>
+            </div>
+
+            <product :premium="premium" @add-to-cart="updateCart" @remove-from-cart="removeItem"></product>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+
+</footer>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- production version, optimized for size and speed -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/jgthms/minireset.css/master/minireset.css">
+    <link rel="stylesheet" href="css/debug.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900">
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- production version, optimized for size and speed -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+
+</head>
+<body>
+
+    <header>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="return-all-wizards.html">Wizards</a>
+                </li>
+                <li>
+                    <a href="wizard-magic-spells.html">Spells</a>
+                </li>
+                <li>
+                    <a href="wizard-transform.html">Transform</a>
+                </li>
+                <li>
+                    <a href="schrodinger-cat.html">Cat</a>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <div id="app">
+            <wizard :name="harry"    :cast="oculus_reparo"     ></wizard>
+            <wizard :name="ron"      :cast="wingardium_leviosa"></wizard>
+            <wizard :name="hermione" :cast="alohomora"         ></wizard>
+        </div>
+
+    </main>
+
+    <footer>
+        <h1>This is the site footer.</h1>
+    </footer>
+
+
+    <script src="index.js"></script>
+
+</body>
+</html>
